@@ -1,0 +1,17 @@
+type Plain {
+  name: String
+  born: Int
+  knows: [Plain!]! @relationship(type: "KNOWS", direction: OUT)
+  friendCount: Int @cypher(statement: "RETURN SIZE((this)-[:KNOWS]->(:Person))")
+}
+type Car {
+  make: String
+  model: String
+  year: Int
+}
+type Donkey {
+  friends: [Donkey!]!
+  model: String
+  year: Int
+}
+
