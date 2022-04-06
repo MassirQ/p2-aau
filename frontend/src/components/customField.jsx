@@ -29,10 +29,9 @@ export const CustomField = ({
           aria-describedby="emailHelp123"
           placeholder="text"
         >
+          <option value="">Please Choose</option>
           <option value="String">Text</option>
           <option value="Int">Number</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
         </select>
       </div>
     </div>

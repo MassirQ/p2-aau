@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CustomField } from "./customField";
+import fetch from "node-fetch";
 
 export default function CustomType({ formValue }) {
   let inputStyle =
@@ -8,19 +9,16 @@ export default function CustomType({ formValue }) {
   let onChangeDataTypeHandle = (e) => {
     let index = formValue.findIndex((p) => p.id === e.target.name);
     // Check if the id exists
-    console.log(index)
     if (index != -1) {
       let entry = formValue[index];
       let newEntry = { ...entry, dataType: e.target.value };
       formValue[index] = newEntry;
-      console.log("formValue: ", formValue);
     } else {
       let entry = {
         id: e.target.name,
         dataType: e.target.value,
       };
       formValue.push(entry);
-      console.log("formValue: ", formValue);
     }
   };
 
@@ -30,24 +28,25 @@ export default function CustomType({ formValue }) {
       let entry = formValue[index];
       let newEntry = { ...entry, fieldName: e.target.value };
       formValue[index] = newEntry;
-      console.log("formValue: ", formValue);
-
     } else {
       let entry = {
         id: e.target.name,
         fieldName: e.target.value,
       };
       formValue.push(entry);
-      console.log("formValue: ", formValue);
     }
   };
 
+ 
+
   const [fields, setFields] = useState([]);
+  const [type, setType] = useState("");
   return (
     <div>
       <div>
         <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md mt-6">
-          <input type="text" className={inputStyle} placeholder="Type" />
+          <input type="text" className={inputStyle} placeholder="Type" onChange={(e)=>setType(e.target.value)}  />
+          {console.log(type)}
           {fields.map((f) => f)}
 
           <button
@@ -84,7 +83,7 @@ ease-in-out"
           </button>
           <button
             type="submit"
-            class="
+            className="
   w-full
   px-6
   py-2.5
@@ -102,6 +101,15 @@ ease-in-out"
   transition
   duration-150
   ease-in-out"
+            onClick={async () => {
+              const body = JSON.stringify({formValue,type});
+              const response = await fetch("http://localhost:8080/", {
+                method: "POST",
+                body,
+                headers: { "Content-Type": "application/json" },
+              });
+              console.log(body);
+            }}
           >
             Submit
           </button>

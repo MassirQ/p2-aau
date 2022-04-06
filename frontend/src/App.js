@@ -1,15 +1,11 @@
-import { useEffect } from "react";import "./App.css";
-import Form from './components/form';
+import React, { useEffect } from "react";
+import Form from "./components/form";
 
 function App() {
-
-
   return (
     <>
-
-<Form />
-
-</>
+      <Form />
+    </>
   );
 }
 
