@@ -1,4 +1,8 @@
 type Hello {
     Yml:String 
 
+  }type Cake {
+    Yksdaiy:String 
+Milk:Int 
+
   }
