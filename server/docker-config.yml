@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+
+  backend:
+    environment:
+      - TYPEDEF=$TYPEDEF
+    restart: always
+    image: backend
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - $BACKEND_PORT:4000
+
+  db:
+    environment:
+      - NEO4J_AUTH=none
+    image: neo4j:latest
+    ports:
+      - $INTERNAL_DATABASE_PORT:7474
+      - $INTERNAL_DATABASE_PORT_2:7687
+    hostname: neo4j
+    volumes:
+      - plugins:/plugins
+      - data:/data
+      - logs:/logs
+volumes:
+  plugins:
+  data:
+  logs:

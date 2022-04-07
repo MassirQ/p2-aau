@@ -1,26 +1,5 @@
-type Car {
-    Model:String 
-Year:Int 
-Range:String 
-
-  }type Car {
-    Model:String 
-Year:Int 
-Range:String 
-
-  }type Car {
-    Model:String 
-Year:Int 
-Range:String 
-
-  }type Plain {
-    model:String 
-make:String 
-
-  }type Person {
-    Name:String 
-age:Int 
-friends:String 
-communication:String 
+type Hello {
+    H:undefined 
+undefined:String 
 
   }

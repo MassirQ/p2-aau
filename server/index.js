@@ -13,8 +13,7 @@ app.post('/', jsonParser,(req, res) => {
   console.log("BODY ", req.body);
   let fields = "";
   for (const field of req.body.formValue) {
-    fields += `${field.fieldName}:${field.dataType} \n`
-   
+    fields += `${field.fieldName}:${field.dataType} \n`  
   }
   const graphql = `type ${req.body.type} {
     ${fields}
@@ -30,12 +29,18 @@ fs.appendFileSync('./schema.graphql', graphql);
 })
 
 app.post('/start', (req,res)=>{
-  fs.appendFileSync(".env", "INTERNAL_DATABASE_PORT=7474\n")
-  fs.appendFileSync(".env", "INTERNAL_DATABASE_PORT_2=7687\n")
-  fs.appendFileSync(".env", "BACKEND_PORT=4000\n")
-  // fs.appendFileSync(".env", `TYPDEF=${graphql}`)
-  execSync("echo TYPEDEF=$(cat schema.graphql) >> .env")
-  execSync("docker-compose up -d");
+  data = 
+    "INTERNAL_DATABASE_PORT=7474\n" +
+    "INTERNAL_DATABASE_PORT_2=7687\n" + 
+    "BACKEND_PORT=4000\n";
+  fs.promises.readFile('./schema.graphql').
+    then((contents) => {
+      data += contents;
+      fs.promises.writeFile("./.env", data)
+      .then(() => { 
+          execSync("docker-compose up -d");
+      })
+    })
 })
 
 app.post('/stop', (req,res)=>{
