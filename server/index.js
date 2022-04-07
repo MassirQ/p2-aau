@@ -33,9 +33,9 @@ app.post('/start', (req,res)=>{
     "INTERNAL_DATABASE_PORT=7474\n" +
     "INTERNAL_DATABASE_PORT_2=7687\n" + 
     "BACKEND_PORT=4000\n";
-  fs.promises.readFile('./schema.graphql').
+  fs.promises.readFile('./schema.graphql',"utf8").
     then((contents) => {
-      data += contents;
+      data += "TYPEDEF=" + contents.replaceAll('\n', ' ');
       fs.promises.writeFile("./.env", data)
       .then(() => { 
           execSync("docker-compose up -d");
