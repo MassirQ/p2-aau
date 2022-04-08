@@ -45,7 +45,7 @@ export default function CustomType({ formValue }) {
   return (
     <div>
       <div>
-        <div className={styles.fieldAddButton}>
+        <div className={styles.custumType}>
           <input type="text" className={inputStyle} placeholder="Type" onChange={(e)=>setType(e.target.value)}  />
           {console.log(type)}
           {fields.map((f) => f)}
@@ -56,7 +56,6 @@ export default function CustomType({ formValue }) {
               setFields([
                 ...fields,
                 <CustomField
-                  inputStyle={styles.typeInput}
                   onChangeDataTypeHandle={onChangeDataTypeHandle}
                   onChangeFieldNameHandle={onChangeFieldNameHandle}
                 />,
