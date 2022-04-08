@@ -1,26 +1,8 @@
-type Car {
-    Model:String 
-Year:Int 
-Range:String 
+type Hello {
+    Yml:String 
 
-  }type Car {
-    Model:String 
-Year:Int 
-Range:String 
-
-  }type Car {
-    Model:String 
-Year:Int 
-Range:String 
-
-  }type Plain {
-    model:String 
-make:String 
-
-  }type Person {
-    Name:String 
-age:Int 
-friends:String 
-communication:String 
+  }type Cake {
+    Yksdaiy:String 
+Milk:Int 
 
   }

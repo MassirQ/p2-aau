@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CustomField } from "./customField";
 import fetch from "node-fetch";
+import {styles} from "../styles.js"
 
 export default function CustomType({ formValue }) {
   let inputStyle =
@@ -44,35 +45,17 @@ export default function CustomType({ formValue }) {
   return (
     <div>
       <div>
-        <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md mt-6">
+        <div className={styles.custumType}>
           <input type="text" className={inputStyle} placeholder="Type" onChange={(e)=>setType(e.target.value)}  />
           {console.log(type)}
           {fields.map((f) => f)}
 
           <button
-            className="
-px-3
-py-2.5
-mb-5  
-bg-blue-600
-text-white
-font-medium
-text-xs
-leading-tight
-uppercase
-rounded
-shadow-md
-hover:bg-blue-700 hover:shadow-lg
-focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-active:bg-blue-800 active:shadow-lg
-transition
-duration-150
-ease-in-out"
+            className={styles.fieldAddButton}
             onClick={() => {
               setFields([
                 ...fields,
                 <CustomField
-                  inputStyle={inputStyle}
                   onChangeDataTypeHandle={onChangeDataTypeHandle}
                   onChangeFieldNameHandle={onChangeFieldNameHandle}
                 />,
@@ -83,24 +66,7 @@ ease-in-out"
           </button>
           <button
             type="submit"
-            className="
-  w-full
-  px-6
-  py-2.5
-  bg-blue-600
-  text-white
-  font-medium
-  text-xs
-  leading-tight
-  uppercase
-  rounded
-  shadow-md
-  hover:bg-blue-700 hover:shadow-lg
-  focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-  active:bg-blue-800 active:shadow-lg
-  transition
-  duration-150
-  ease-in-out"
+            className={styles.submitButton}
             onClick={async () => {
               const body = JSON.stringify({formValue,type});
               const response = await fetch("http://localhost:8080/", {

@@ -1,8 +1,8 @@
 import React from "react";
 import * as md5 from "md5";
+import {styles} from "../styles.js"
 
 export const CustomField = ({
-  inputStyle,
   onChangeDataTypeHandle,
   onChangeFieldNameHandle,
 }) => {
@@ -13,7 +13,7 @@ export const CustomField = ({
           onChange={(e) => onChangeFieldNameHandle(e)}
           name={md5(Date.now())}
           type="text"
-          className={inputStyle}
+          className={styles.inputField}
           id="exampleInput123"
           aria-describedby="emailHelp123"
           placeholder="text"
@@ -24,7 +24,7 @@ export const CustomField = ({
           onChange={(e) => onChangeDataTypeHandle(e)}
           name={md5(Date.now())}
           type="text"
-          className={inputStyle}
+          className={styles.inputField}
           id="exampleInput123"
           aria-describedby="emailHelp123"
           placeholder="text"
