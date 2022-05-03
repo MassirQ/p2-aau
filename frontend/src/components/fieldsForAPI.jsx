@@ -33,7 +33,7 @@ export const FieldsForAPI = ({
   className={inputStyle}
   id="exampleInput123"
   aria-describedby="emailHelp123"
-  placeholder="text"
+  placeholder="API path"
 />
 </div>
 
