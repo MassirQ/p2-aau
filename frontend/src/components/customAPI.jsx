@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { CustomField } from "./customField";
-import { FieldsForAPI }  from "./fieldsForAPI";
 import fetch from "node-fetch";
 
-export default function CustomType({ formValue }) {
+export default function CustomAPI({ formValue }) {
   let inputStyle =
     "form-control block w-full mb-5 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
 
-  let onChangeDataTypeHandle = (e) => {
+    let onChangeDataTypeHandle = (e) => {
     let index = formValue.findIndex((p) => p.id === e.target.name);
     // Check if the id exists
     if (index != -1) {
@@ -37,8 +36,7 @@ export default function CustomType({ formValue }) {
       formValue.push(entry);
     }
   };
-
-  let onChangeEndpointTypeHandle = (e) => {
+  let onChangeEndpointHandle = (e) => {
     let index = formValue.findIndex((p) => p.id === e.target.name);
     if (index != -1) {
       let entry = formValue[index];
@@ -52,25 +50,11 @@ export default function CustomType({ formValue }) {
       formValue.push(entry);
     }
   };
-  let onChangeMethodHandle = (e) => {
-    let index = formValue.findIndex((p) => p.id === e.target.name);
-    if (index != -1) {
-      let entry = formValue[index];
-      let newEntry = { ...entry, fieldName: e.target.value };
-      formValue[index] = newEntry;
-    } else {
-      let entry = {
-        id: e.target.name,
-        fieldName: e.target.value,
-      };
-      formValue.push(entry);
-    }
-  };
+ 
 
   const [fields, setFields] = useState([]);
   const [type, setType] = useState("");
-  const [endpoints, setEndpoints] = useState([]);
-  const [method, setMethod] = useState([]);
+  const [path, setPath] = useState("");
   return (
     <div>
       <div>
@@ -78,7 +62,9 @@ export default function CustomType({ formValue }) {
           <input type="text" className={inputStyle} placeholder="Type" onChange={(e)=>setType(e.target.value)}  />
           {console.log(type)}
           {fields.map((f) => f)}
-
+          <input type="text" className={inputStyle} placeholder="Path" onChange={(e)=>setPath(e.target.value)}  />
+          {console.log(path)}
+          {fields.map((f) => f)}
           <button
             className="
 px-3
@@ -109,39 +95,7 @@ ease-in-out"
               ]);
             }}
           >
-            Add field 
-          </button>
-          <button
-            className="
-px-3
-py-2.5
-mb-5  
-bg-blue-600
-text-white
-font-medium
-text-xs
-leading-tight
-uppercase
-rounded
-shadow-md
-hover:bg-blue-700 hover:shadow-lg
-focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-active:bg-blue-800 active:shadow-lg
-transition
-duration-150
-ease-in-out"
-            onClick={() => {
-              setEndpoints([
-                ...endpoints,
-                <FieldsForAPI
-                  inputStyle={inputStyle}
-                  onChangeEnpointHandle={onChangeEndpointTypeHandle}
-                  onChangeMethodHandle={onChangeMethodHandle}
-                />,
-              ]);
-            }}
-          >
-            Attach Endpoint
+            +
           </button>
           <button
             type="submit"
