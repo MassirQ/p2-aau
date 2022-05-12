@@ -6,6 +6,7 @@ export const FieldsForAPI = ({
   onChangeEndpointTypeHandle,
   onChangeMethodHandle,
   onChangeURLHandle,
+  onChangeMethodNameHandle,
 }) => {
     const [endpointType, setEndpointType] = useState("");
   return (
@@ -36,7 +37,17 @@ export const FieldsForAPI = ({
   placeholder="API path"
 />
 </div>
-
+<div className="form-group mb-6">
+<input
+  onChange={(e) => onChangeMethodNameHandle(e)}
+  name={md5(Date.now())}
+  type="text"
+  className={inputStyle}
+  id="exampleInput123"
+  aria-describedby="emailHelp123"
+  placeholder="Method Name"
+/>
+</div>
       {endpointType === "restAPI" && <div class="form-group mb-6">
         <select
           onChange={(e) => onChangeMethodHandle(e)}

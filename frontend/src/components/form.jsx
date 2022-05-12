@@ -9,7 +9,7 @@ export default function Form() {
 
   return (
    <div>
-      <div className="grid grid-cols-5">
+      <div className="grid grid-cols-2">
       {types.map(type => type)}
       {paths.map(path => path)}
       </div>    

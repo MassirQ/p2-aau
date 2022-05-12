@@ -42,12 +42,12 @@ export default function CustomType({ formValue }) {
     let index = formValue.findIndex((p) => p.id === e.target.name);
     if (index != -1) {
       let entry = formValue[index];
-      let newEntry = { ...entry, fieldName: e.target.value };
+      let newEntry = { ...entry, endPointName: e.target.value };
       formValue[index] = newEntry;
     } else {
       let entry = {
         id: e.target.name,
-        fieldName: e.target.value,
+        endPointName: e.target.value,
       };
       formValue.push(entry);
     }
@@ -56,12 +56,12 @@ export default function CustomType({ formValue }) {
     let index = formValue.findIndex((p) => p.id === e.target.name);
     if (index != -1) {
       let entry = formValue[index];
-      let newEntry = { ...entry, fieldName: e.target.value };
+      let newEntry = { ...entry, fieldMethod: e.target.value };
       formValue[index] = newEntry;
     } else {
       let entry = {
         id: e.target.name,
-        fieldName: e.target.value,
+        fieldMethod: e.target.value,
       };
       formValue.push(entry);
     }
@@ -70,12 +70,26 @@ export default function CustomType({ formValue }) {
     let index = formValue.findIndex((p) => p.id === e.target.name);
     if (index != -1) {
       let entry = formValue[index];
-      let newEntry = { ...entry, fieldName: e.target.value };
+      let newEntry = { ...entry, URLName: e.target.value };
       formValue[index] = newEntry;
     } else {
       let entry = {
         id: e.target.name,
-        fieldName: e.target.value,
+        URLName: e.target.value,
+      };
+      formValue.push(entry);
+    }
+  };
+  let onChangeMethodNameHandle = (e) => {
+    let index = formValue.findIndex((p) => p.id === e.target.name);
+    if (index != -1) {
+      let entry = formValue[index];
+      let newEntry = { ...entry, methodName: e.target.value };
+      formValue[index] = newEntry;
+    } else {
+      let entry = {
+        id: e.target.name,
+        methodName: e.target.value,
       };
       formValue.push(entry);
     }
@@ -145,7 +159,7 @@ transition
 duration-150
 ease-in-out"
             onClick={() => {
-              console.log("hello", endpoints);
+             
               setEndpoints([
                 ...endpoints,
                 <FieldsForAPI
@@ -153,6 +167,7 @@ ease-in-out"
                   onChangeEndpointTypeHandle={onChangeEndpointTypeHandle}
                   onChangeMethodHandle={onChangeMethodHandle}
                   onChangeURLHandle={onChangeURLHandle}
+                  onChangeMethodNameHandle={onChangeMethodNameHandle}
                 />,
               ]);
             }}
