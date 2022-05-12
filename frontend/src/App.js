@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import Form from "./components/form";
+import { HomePage } from "./pages/home";
 
 function App() {
   return (
     <>
-      <Form />
+      <HomePage />
     </>
   );
 }
