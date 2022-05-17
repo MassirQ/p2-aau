@@ -1,26 +1,46 @@
-type Car {
-    Model:String 
-Year:Int 
-Range:String 
+type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
 
-  }type Car {
-    Model:String 
-Year:Int 
-Range:String 
+  }type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
 
-  }type Car {
-    Model:String 
-Year:Int 
-Range:String 
+  }type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
 
-  }type Plain {
-    model:String 
-make:String 
+  }type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
 
-  }type Person {
-    Name:String 
-age:Int 
-friends:String 
-communication:String 
+  }type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
+
+  }type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
+
+  }type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
+
+  }type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
+
+  }type hello {
+    person:String 
+undefined:undefined 
+undefined:undefined 
 
   }
