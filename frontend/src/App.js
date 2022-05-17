@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import Form from "./components/form";
+import { Route } from "react-router-dom";
+
+import Form from "./pages/form";
 import { HomePage } from "./pages/home";
 
 function App() {
   return (
     <>
-      <HomePage />
-    </>
+    <Route path="/"  exact component={HomePage}/>
+    <Route path="/form" exact component={Form}/>
+</>
   );
 }
 

@@ -40,12 +40,12 @@ export default function CustomAPI({ formValue }) {
     let index = formValue.findIndex((p) => p.id === e.target.name);
     if (index != -1) {
       let entry = formValue[index];
-      let newEntry = { ...entry, fieldName: e.target.value };
+      let newEntry = { ...entry, EndpointName: e.target.value };
       formValue[index] = newEntry;
     } else {
       let entry = {
         id: e.target.name,
-        fieldName: e.target.value,
+        EndpointName: e.target.value,
       };
       formValue.push(entry);
     }

@@ -3,7 +3,7 @@ import { CustomField } from "./customField";
 import { FieldsForAPI }  from "./fieldsForAPI";
 import fetch from "node-fetch";
 
-export default function CustomType({ formValue }) {
+export default function CustomType({ formValue, endpointData }) {
   let inputStyle =
     "form-control block w-full mb-5 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
 
@@ -38,61 +38,62 @@ export default function CustomType({ formValue }) {
     }
   };
 
-  let onChangeEndpointTypeHandle = (e) => {
-    let index = formValue.findIndex((p) => p.id === e.target.name);
-    if (index != -1) {
-      let entry = formValue[index];
-      let newEntry = { ...entry, endPointName: e.target.value };
-      formValue[index] = newEntry;
-    } else {
-      let entry = {
-        id: e.target.name,
-        endPointName: e.target.value,
-      };
-      formValue.push(entry);
-    }
-  };
   let onChangeMethodHandle = (e) => {
-    let index = formValue.findIndex((p) => p.id === e.target.name);
+    let index = endpointData.findIndex((p) => p.id === e.target.name);
     if (index != -1) {
-      let entry = formValue[index];
-      let newEntry = { ...entry, fieldMethod: e.target.value };
-      formValue[index] = newEntry;
+      let entry = endpointData[index];
+      let newEntry = { ...entry, fieldMethodName: e.target.value };
+      endpointData[index] = newEntry;
     } else {
       let entry = {
         id: e.target.name,
-        fieldMethod: e.target.value,
+        fieldMethodName: e.target.value,
       };
-      formValue.push(entry);
+      endpointData.push(entry);
     }
   };
   let onChangeURLHandle = (e) => {
-    let index = formValue.findIndex((p) => p.id === e.target.name);
+    let index = endpointData.findIndex((p) => p.id === e.target.name);
     if (index != -1) {
-      let entry = formValue[index];
+      let entry = endpointData[index];
       let newEntry = { ...entry, URLName: e.target.value };
-      formValue[index] = newEntry;
+      endpointData[index] = newEntry;
     } else {
       let entry = {
         id: e.target.name,
         URLName: e.target.value,
       };
-      formValue.push(entry);
+      endpointData.push(entry);
     }
   };
   let onChangeMethodNameHandle = (e) => {
-    let index = formValue.findIndex((p) => p.id === e.target.name);
+    let index = endpointData.findIndex((p) => p.id === e.target.name);
     if (index != -1) {
-      let entry = formValue[index];
+      let entry = endpointData[index];
       let newEntry = { ...entry, methodName: e.target.value };
-      formValue[index] = newEntry;
+      endpointData[index] = newEntry;
     } else {
       let entry = {
         id: e.target.name,
         methodName: e.target.value,
       };
-      formValue.push(entry);
+      endpointData.push(entry);
     }
+  };
+
+    let onChangeOutPutHandle = (e) => {
+      let index = endpointData.findIndex((p) => p.id === e.target.name);
+      if (index != -1) {
+        let entry = endpointData[index];
+        let newEntry = { ...entry, outPut: e.target.value };
+        endpointData[index] = newEntry;
+      } else {
+        let entry = {
+          id: e.target.name,
+          outPut: e.target.value,
+        };
+        endpointData.push(entry);
+      }
   };
 
   const [fields, setFields] = useState([]);
@@ -106,6 +107,7 @@ export default function CustomType({ formValue }) {
           {console.log(type)}
           {fields.map((f) => f)}
           {endpoints.map((e) => e)}
+         
 
           <button
             className="
@@ -164,10 +166,10 @@ ease-in-out"
                 ...endpoints,
                 <FieldsForAPI
                   inputStyle={inputStyle}
-                  onChangeEndpointTypeHandle={onChangeEndpointTypeHandle}
                   onChangeMethodHandle={onChangeMethodHandle}
                   onChangeURLHandle={onChangeURLHandle}
                   onChangeMethodNameHandle={onChangeMethodNameHandle}
+                  onChangeOutPutHandle={onChangeOutPutHandle}
                 />,
               ]);
             }}
@@ -195,14 +197,15 @@ ease-in-out"
   duration-150
   ease-in-out"
             onClick={async () => {
-              const body = JSON.stringify({formValue,type});
-              const response = await fetch("http://localhost:8080/", {
+              const body = JSON.stringify({formValue,type, endpointData});
+              await fetch("http://localhost:8080/", {
                 method: "POST",
                 body,
                 headers: { "Content-Type": "application/json" },
               });
               console.log(body);
-            }}
+            }
+          }
           >
             Submit
           </button>
