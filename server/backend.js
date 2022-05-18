@@ -27,3 +27,10 @@ const resolvers = {
 
         
   }}
+  const typeDefs = gql
+  type Query {
+    getAirplanes:[Airplanes]
+    getUser:user
+    getUser:user
+  }
+  

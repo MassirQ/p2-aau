@@ -29,11 +29,50 @@ app.post('/createEndpointResolvers', jsonParser, (res1, req1)=>{
       {{/endpointData}}
 
         
-  }}`
+  }}
+  `
 let output = Mustache.render(template, {"endpointData":endpoints});
 console.log(output)
 console.log("writing into existing file");
 fs.writeFileSync('./backend.js', output);
+})
+
+app.post('/createTypeQueries', jsonParser, (res, req)=>{
+  const res3 = fs.readFileSync("./tmp","utf8");
+  let lines = res3.toString().trim().split(/\n/);
+  let wrapped = "[" + lines.join(",") + "]";
+  let endpoints = JSON.parse(wrapped)
+  console.log(typeof endpoints)
+  const template1 = `const typeDefs = gql
+  type Query {
+    {{#endpointData}}
+    {{methodName}}:{{outPut}}
+    {{/endpointData}}
+  }
+  `
+let outputForTypeQueries = Mustache.render(template1, {"endpointData":endpoints});
+console.log(outputForTypeQueries)
+console.log("writing typeQuries into existing file");
+fs.appendFileSync('./backend.js', outputForTypeQueries);
+
+})
+
+app.post('/createTypes', jsonParser, (res, req)=>{
+  const res3 = fs.readFileSync("./tmpTypes","utf8");
+  let lines = res3.toString().trim().split(/\n/);
+  let wrapped = "[" + lines.join(",") + "]";
+  let types = JSON.parse(wrapped)
+  console.log(typeof endpoints)
+  const template2 = ` type ${req.body.type}{
+  {{#formValue}}
+  
+    {{fieldName}}:{{dataType}}
+    {{/formValue}}
+  }
+  `
+let outputForTypes = Mustache.render(template2, {"formValue":types, type:type});
+console.log(outputForTypes)
+
 })
 
 
@@ -63,6 +102,9 @@ app.post('/', jsonParser,(req, res) => {
   
 for (const data of req.body.endpointData) {
   fs.appendFileSync('./tmp', JSON.stringify(data)+ "\n" )
+}
+for (const data of req.body.formValue) {
+  fs.appendFileSync('./tmpTypes', JSON.stringify(data)+ "\n" )
 }
 
 
