@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CustomField } from "./customField";
 import { FieldsForAPI }  from "./fieldsForAPI";
+import * as md5 from "md5";
 import fetch from "node-fetch";
 
 export default function CustomType({ formValue, endpointData }) {
@@ -103,7 +104,7 @@ export default function CustomType({ formValue, endpointData }) {
     <div>
       <div>
         <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md mt-6">
-          <input type="text" className={inputStyle} placeholder="Type" onChange={(e)=>setType(e.target.value)}  />
+          <input type="text" className={inputStyle} name={md5(Date.now())} placeholder="Type" onChange={(e)=>setType(e.target.value)}  />
           {console.log(type)}
           {fields.map((f) => f)}
           {endpoints.map((e) => e)}

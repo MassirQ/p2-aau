@@ -5,10 +5,13 @@ export const CustomField = ({
   inputStyle,
   onChangeDataTypeHandle,
   onChangeFieldNameHandle,
+  onChangeTypeHandle,
 }) => {
   return (
     <div class="grid grid-cols-2 gap-4">
+
       <div class="form-group mb-6">
+
         <input
           onChange={(e) => onChangeFieldNameHandle(e)}
           name={md5(Date.now())}
