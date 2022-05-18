@@ -167,7 +167,7 @@ export default function Form() {
   ease-in-out"
   onClick={async () => {
    
-    const response = await fetch("http://localhost:8080/createTypes", {
+ await fetch("http://localhost:8080/createType", {
       method: "POST",
     });
   }}
