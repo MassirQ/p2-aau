@@ -1,46 +1,14 @@
-type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
+type Query {
+  getAirlines: [Airlines]
+}
 
-  }type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
-
-  }type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
-
-  }type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
-
-  }type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
-
-  }type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
-
-  }type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
-
-  }type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
-
-  }type hello {
-    person:String 
-undefined:undefined 
-undefined:undefined 
-
-  }
+type Airline {
+  id: ID
+  name: String
+  country: String
+  logo: String
+  slogan: String
+  head_quaters: String
+  website: String
+  established: Int
+}

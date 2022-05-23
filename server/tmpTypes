@@ -1,6 +1,1 @@
-{"id":"e2948ffd9ae18a241ab88a8c10c353c1","dataType":"String","fieldName":"Adress"}
-{"id":"d9b3d4ec050cfaa6d7fdd7db6ca70e8e","dataType":"Int","fieldName":"Age"}
-{"id":"eb512a1a9c52dc87ca2d236b0d707564","dataType":"String","fieldName":"Name"}
-{"id":"e2948ffd9ae18a241ab88a8c10c353c1","dataType":"String","fieldName":"Adress"}
-{"id":"d9b3d4ec050cfaa6d7fdd7db6ca70e8e","dataType":"Int","fieldName":"Age"}
-{"id":"eb512a1a9c52dc87ca2d236b0d707564","dataType":"String","fieldName":"Name"}
+{"type":"Airline","fields":[{"id":"16275396215c33c3c2fae3cc754b85a0","dataType":"String"},{"id":"1e658436ef9df353cf9a1c5110aa0865","fieldName":"name"}]}
