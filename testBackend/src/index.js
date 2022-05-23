@@ -2,7 +2,8 @@ const axios = require('axios').default;
 const { Neo4jGraphQL } = require("@neo4j/graphql");
 const { loadSchema } = require('@graphql-tools/load')
 const { GraphQLFileLoader } = require('@graphql-tools/graphql-file-loader')
-import {resolvers} from "./customResolvers";
+const {resolvers} = require('./backend')
+const {typeDefs} = require('./schema')
 const { ApolloServer, gql } = require("apollo-server");
 const neo4j = require("neo4j-driver");
 const fs = require("fs");
@@ -33,51 +34,7 @@ let argv = process.argv.slice(1);
 // await fs.writeFileSync("src/schema.graphql", graphql);
 
 // let schemaDef = await fs.readFileSync("src/schema.graphql");
-// const resolvers ={
-//   Query: {
-//     getUser: async (_,{username}) => {
-//       try {
-//         const res =  await axios.get(`https://api.github.com/users/${username}`);
-//         return res.data;
-//       } catch (error) {
-//         console.log(error)
-//       }
-//     }, 
-//     getAirlines: async () => {
-//       try {
-//         const res = await axios.get('https://api.instantwebtools.net/v1/airlines');
-//         return res.data;
-//       } catch (error) {
-//         console.log(error)
-//       }
-//     }
-//   }
-// }
-const typeDefs = gql`
-   type Query {
-     getUser(username:String):User
-     getAirlines: [Airline]
-   }
-   type Airline {
-    id: ID,
-        name: String,
-        country: String,
-        logo: String,
-        slogan: String,
-        head_quaters: String,
-        website: String,
-        established: Int
-   } 
-   type User {
-     login: String
-     id: ID!
-     url: String
-   } 
-   type Computer {
-       make: String
-       model: String
-   }`
-// let typeDefs = gql`${process.env.TYPEDEF}`;
+
 
 // Create instance that contains executable GraphQL schema from GraphQL type definitions
 const neo4jGraphQL = new Neo4jGraphQL({
