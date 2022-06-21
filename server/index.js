@@ -16,12 +16,13 @@ app.post("/createEndpointResolvers", jsonParser, (res1, req1) => {
   let wrapped = "[" + lines.join(",") + "]";
   let endpoints = JSON.parse(wrapped);
   console.log(typeof endpoints);
-  const template = `exports.resolvers = {
+  const template = `const axios = require("axios");
+  exports.resolvers = {
     Query: {
       {{#endpointData}}
       {{methodName}}: async () => {
         try {
-          const res =  await axios.{{fieldMethodName}}("{{URLName}}");
+          const res =  await axios.{{fieldMethodName}}("{{& URLName}}");
           return res.data;
         } catch (error) {
           console.log(error)
@@ -127,10 +128,10 @@ app.post("/start", () => {
 
 app.post("/stop", () => {
   execSync("docker-compose down");
-  fs.unlinkSync("./schema.graphql")
-  fs.unlinkSync("./backend.js")
-  fs.unlinkSync("./tmpTypes")
-  fs.unlinkSync("./tmp")
+  //fs.unlinkSync("./schema.graphql")
+  //fs.unlinkSync("./backend.js")
+  //fs.unlinkSync("./tmpTypes")
+  //fs.unlinkSync("./tmp")
 });
 
 app.listen(port, () => {

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,8 @@
     "express": "^4.17.3",
     "mustache": "^4.2.0",
     "utf8": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }

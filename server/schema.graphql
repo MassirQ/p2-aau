@@ -1,14 +1,9 @@
-type Query {
-  getAirlines: [Airlines]
-}
 
-type Airline {
-  id: ID
-  name: String
-  country: String
-  logo: String
-  slogan: String
-  head_quaters: String
-  website: String
-  established: Int
-}
+  type Query {
+    getAirlines:[Airlines]
+  }
+   
+  type Airlines{
+    name:String
+  }
+  
