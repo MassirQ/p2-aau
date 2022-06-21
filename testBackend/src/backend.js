@@ -1,4 +1,5 @@
-exports.resolvers = {
+const axios = require("axios");
+  exports.resolvers = {
     Query: {
       getAirlines: async () => {
         try {

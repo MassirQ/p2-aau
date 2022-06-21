@@ -16,7 +16,7 @@ const PASSWORD = 'guc6IQaY6L1RVDbFaZea2n4k0R48rtZ_NbNjS1PnuWA';
 // Create Neo4j driver instance
 // const driver = neo4j.driver(AURA_ENDPOINT, neo4j.auth.basic(USERNAME, PASSWORD), { } );
 const driver = neo4j.driver('neo4j://localhost:7687',neo4j.auth.basic("neo4j", "abc123"));
-let argv = process.argv.slice(1);
+//let argv = process.argv.slice(1);
 // let type = "Plain"npm;
 // let graphql = ` type ${type} {
 //     name: String
