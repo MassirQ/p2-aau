@@ -56,7 +56,7 @@ export default function Form() {
   ease-in-out"
   onClick={async () => {
    
-    const response = await fetch("http://localhost:8080/start", {
+  await fetch("http://localhost:8080/start", {
       method: "POST",
 
     });
@@ -84,7 +84,7 @@ export default function Form() {
   ease-in-out"
   onClick={async () => {
    
-    const response = await fetch("http://localhost:8080/stop", {
+  await fetch("http://localhost:8080/stop", {
       method: "POST",
 
     });
@@ -113,7 +113,7 @@ export default function Form() {
   ease-in-out"
   onClick={async () => {
    
-    const response = await fetch("http://localhost:8080/createEndpointResolvers", {
+    await fetch("http://localhost:8080/createEndpointResolvers", {
       method: "POST",
     });
   }}
@@ -140,7 +140,7 @@ export default function Form() {
   ease-in-out"
   onClick={async () => {
    
-    const response = await fetch("http://localhost:8080/createTypeQueries", {
+   await fetch("http://localhost:8080/createTypeQueries", {
       method: "POST",
     });
   }}
